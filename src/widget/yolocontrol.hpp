@@ -34,7 +34,7 @@ private slots:
 private:
     void on_trainProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
     Ui::yoloControl *ui;
-    QProcess *m_trainProcess;   //进程指针
+    QProcess *m_trainProcess;
     QProcess *m_convertProcess;
     QString m_allOutput;    //标准输出
     QString m_lastSavedPath; //记录模型路径
