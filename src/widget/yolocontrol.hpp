@@ -36,7 +36,7 @@ private:
     Ui::yoloControl *ui;
     QProcess *m_trainProcess;
     QProcess *m_convertProcess;
-    QString m_allOutput;    //标准输出
+    QString m_allOutput;
     QString m_lastSavedPath; //记录模型路径
 
 };
