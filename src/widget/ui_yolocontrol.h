@@ -38,7 +38,6 @@ public:
     QVBoxLayout *verticalLayout_3;
     QGridLayout *gridLayout_4;
     QLabel *label;
-    QComboBox *m_comVersion;
     QLabel *label_9;
     QComboBox *m_comEvnName;
     QLabel *label_2;
@@ -47,6 +46,7 @@ public:
     QLabel *label_3;
     QLineEdit *m_lineYamlPath;
     QPushButton *m_btnYamlOpen;
+    QComboBox *m_comVersion;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_4;
     QGridLayout *gridLayout_3;
@@ -70,6 +70,7 @@ public:
     QSplitter *splitter;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
+    QPushButton *m_btnDownload;
     QSpacerItem *verticalSpacer;
     QLabel *label_11;
     QGridLayout *gridLayout_2;
@@ -94,7 +95,7 @@ public:
     {
         if (yoloControl->objectName().isEmpty())
             yoloControl->setObjectName("yoloControl");
-        yoloControl->resize(1058, 353);
+        yoloControl->resize(758, 353);
         centralwidget = new QWidget(yoloControl);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout_5 = new QHBoxLayout(centralwidget);
@@ -114,14 +115,6 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         gridLayout_4->addWidget(label, 0, 0, 1, 2);
-
-        m_comVersion = new QComboBox(layoutWidget);
-        m_comVersion->addItem(QString());
-        m_comVersion->addItem(QString());
-        m_comVersion->addItem(QString());
-        m_comVersion->setObjectName("m_comVersion");
-
-        gridLayout_4->addWidget(m_comVersion, 0, 2, 1, 1);
 
         label_9 = new QLabel(layoutWidget);
         label_9->setObjectName("label_9");
@@ -167,6 +160,14 @@ public:
         m_btnYamlOpen->setObjectName("m_btnYamlOpen");
 
         gridLayout_4->addWidget(m_btnYamlOpen, 3, 3, 1, 1);
+
+        m_comVersion = new QComboBox(layoutWidget);
+        m_comVersion->addItem(QString());
+        m_comVersion->addItem(QString());
+        m_comVersion->addItem(QString());
+        m_comVersion->setObjectName("m_comVersion");
+
+        gridLayout_4->addWidget(m_comVersion, 0, 2, 1, 2);
 
 
         verticalLayout_3->addLayout(gridLayout_4);
@@ -290,6 +291,11 @@ public:
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        m_btnDownload = new QPushButton(layoutWidget1);
+        m_btnDownload->setObjectName("m_btnDownload");
+
+        verticalLayout->addWidget(m_btnDownload);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -394,10 +400,6 @@ public:
     {
         yoloControl->setWindowTitle(QCoreApplication::translate("yoloControl", "\347\256\200\346\230\223\350\256\255\347\273\203\345\267\245\345\205\267", nullptr));
         label->setText(QCoreApplication::translate("yoloControl", "\350\257\267\351\200\211\346\213\251\346\202\250\347\232\204YOLO\347\211\210\346\234\254: ", nullptr));
-        m_comVersion->setItemText(0, QCoreApplication::translate("yoloControl", "YOLOv5", nullptr));
-        m_comVersion->setItemText(1, QCoreApplication::translate("yoloControl", "YOLOv8", nullptr));
-        m_comVersion->setItemText(2, QCoreApplication::translate("yoloControl", "YOLOv11", nullptr));
-
         label_9->setText(QCoreApplication::translate("yoloControl", "\344\275\277\347\224\250\347\232\204conda\347\216\257\345\242\203\345\220\215\347\247\260\346\230\257:", nullptr));
         m_comEvnName->setItemText(0, QCoreApplication::translate("yoloControl", "yolo_to_kmodel", nullptr));
 
@@ -405,6 +407,10 @@ public:
         m_btnYoloOpen->setText(QCoreApplication::translate("yoloControl", "\346\211\223\345\274\200", nullptr));
         label_3->setText(QCoreApplication::translate("yoloControl", "\346\211\223\345\274\200\351\205\215\347\275\256\346\226\207\344\273\266:", nullptr));
         m_btnYamlOpen->setText(QCoreApplication::translate("yoloControl", "\346\211\223\345\274\200", nullptr));
+        m_comVersion->setItemText(0, QCoreApplication::translate("yoloControl", "YOLOv11", nullptr));
+        m_comVersion->setItemText(1, QCoreApplication::translate("yoloControl", "YOLOv8", nullptr));
+        m_comVersion->setItemText(2, QCoreApplication::translate("yoloControl", "YOLOv5", nullptr));
+
         label_4->setText(QCoreApplication::translate("yoloControl", "\351\205\215\347\275\256\350\256\255\347\273\203\345\217\202\346\225\260:", nullptr));
         label_5->setText(QCoreApplication::translate("yoloControl", "Epochs:", nullptr));
         label_6->setText(QCoreApplication::translate("yoloControl", "Batch Size:", nullptr));
@@ -417,6 +423,7 @@ public:
         m_btnStop->setText(QCoreApplication::translate("yoloControl", "\345\201\234\346\255\242\350\256\255\347\273\203", nullptr));
         m_btn2Onnx->setText(QCoreApplication::translate("yoloControl", "toOnnx", nullptr));
         m_btn2Kmodel->setText(QCoreApplication::translate("yoloControl", "toKmodel", nullptr));
+        m_btnDownload->setText(QCoreApplication::translate("yoloControl", "\344\270\213\350\275\275\346\226\207\346\241\243", nullptr));
         label_11->setText(QCoreApplication::translate("yoloControl", "\344\270\215\350\256\255\347\273\203\347\233\264\346\216\245\350\275\254\345\214\226\351\234\200\350\246\201\346\217\220\344\276\233\346\250\241\345\236\213\346\226\207\344\273\266\345\222\214val\346\225\260\346\215\256\351\233\206\351\273\230\350\256\244\346\230\257best.onnx/best.pt", nullptr));
         label_12->setText(QCoreApplication::translate("yoloControl", "\346\250\241\345\236\213\346\226\207\344\273\266\350\267\257\345\276\204:", nullptr));
         m_btnPtOpen->setText(QCoreApplication::translate("yoloControl", "\346\211\223\345\274\200", nullptr));

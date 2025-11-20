@@ -527,6 +527,40 @@ void yoloControl::on_m_Dir2Kmodel_clicked() {
 }
 
 
+void yoloControl::on_m_btnDownload_clicked()
+{
+  QFile resFile(":/yolo.md");
+  if (!resFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    QMessageBox::warning(this, "错误", "无法读取内置文档！");
+    return;
+  }
+
+  QString mdContent = resFile.readAll();
+  resFile.close();
+
+  QString savePath = QFileDialog::getSaveFileName(
+      this,
+      "保存说明文档",
+      "yolo_help.md",
+      "Markdown 文件 (*.md)"
+  );
+
+  if (savePath.isEmpty()) return;
+
+  QFile out(savePath);
+  if (!out.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    QMessageBox::warning(this, "错误", "无法写入文件！");
+    return;
+  }
+
+  out.write(mdContent.toUtf8());
+  out.close();
+
+  QMessageBox::information(this, "完成", "文档已成功保存！");
+}
+
+
+
 
 
 

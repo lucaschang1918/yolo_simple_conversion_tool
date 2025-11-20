@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1058</width>
+    <width>758</width>
     <height>353</height>
    </rect>
   </property>
@@ -32,25 +32,6 @@
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QComboBox" name="m_comVersion">
-            <item>
-             <property name="text">
-              <string>YOLOv5</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>YOLOv8</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>YOLOv11</string>
-             </property>
-            </item>
            </widget>
           </item>
           <item row="1" column="0" colspan="2">
@@ -113,6 +94,25 @@
             <property name="text">
              <string>打开</string>
             </property>
+           </widget>
+          </item>
+          <item row="0" column="2" colspan="2">
+           <widget class="QComboBox" name="m_comVersion">
+            <item>
+             <property name="text">
+              <string>YOLOv11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>YOLOv8</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>YOLOv5</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -314,6 +314,13 @@
        </property>
        <widget class="QWidget" name="layoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="m_btnDownload">
+           <property name="text">
+            <string>下载文档</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <spacer name="verticalSpacer">
            <property name="orientation">

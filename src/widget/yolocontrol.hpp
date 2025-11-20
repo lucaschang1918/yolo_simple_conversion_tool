@@ -30,6 +30,7 @@ private slots:
     void on_m_btnValOpen_clicked();
     void on_m_btnDir2Onnx_clicked();
     void on_m_Dir2Kmodel_clicked();
+    void on_m_btnDownload_clicked();
 
 private:
     void on_trainProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);

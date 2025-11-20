@@ -1,5 +1,6 @@
 <RCC>
 	<qresource prefix="/">
 		<file>naiLong.ico</file>
+		<file>yolo.md</file>
 	</qresource>
 </RCC>
