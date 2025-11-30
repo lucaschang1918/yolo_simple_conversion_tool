@@ -1,0 +1,9 @@
+<RCC>
+	<qresource prefix="/">
+		<file>naiLong.ico</file>
+		<file>./doc/yolo.md</file>
+		<file>./scripts/test_onnx.py</file>
+		<file>./scripts/test_pt.py</file>
+	</qresource>
+
+</RCC>

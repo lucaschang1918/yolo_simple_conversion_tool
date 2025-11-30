@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1081</width>
-    <height>353</height>
+    <width>1675</width>
+    <height>372</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <property name="orientation">
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
@@ -32,25 +32,6 @@
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QComboBox" name="m_comVersion">
-            <item>
-             <property name="text">
-              <string>YOLOv5</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>YOLOv8</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>YOLOv11</string>
-             </property>
-            </item>
            </widget>
           </item>
           <item row="1" column="0" colspan="2">
@@ -113,6 +94,25 @@
             <property name="text">
              <string>打开</string>
             </property>
+           </widget>
+          </item>
+          <item row="0" column="2" colspan="2">
+           <widget class="QComboBox" name="m_comVersion">
+            <item>
+             <property name="text">
+              <string>YOLOv11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>YOLOv8</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>YOLOv5</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -312,8 +312,29 @@
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="m_btnDownload">
+           <property name="text">
+            <string>下载文档</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnTestPt">
+           <property name="text">
+            <string>测试Pt</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnTestOnnx">
+           <property name="text">
+            <string>测试Onnx</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
@@ -330,7 +351,7 @@
          <item>
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>不训练直接转化需要提供pt文件和val数据集</string>
+            <string>不训练直接转化需要提供模型文件和val数据集默认是best.onnx/best.pt</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -342,7 +363,7 @@
            <item row="0" column="0" colspan="2">
             <widget class="QLabel" name="label_12">
              <property name="text">
-              <string>pt文件路径:</string>
+              <string>模型文件路径:</string>
              </property>
             </widget>
            </item>
@@ -430,7 +451,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QLabel" name="label_10">
