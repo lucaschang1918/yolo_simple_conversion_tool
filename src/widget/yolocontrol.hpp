@@ -7,7 +7,12 @@
 
 #include <QMainWindow>
 #include <QProcess>
-
+#include <windows.h>
+#include <processthreadsapi.h>
+#include <QTimer>
+#include <QTextStream>
+#include <QFile>
+#include <QStringConverter>  // Qt6 新增的编码转换类
 QT_BEGIN_NAMESPACE
 namespace Ui { class yoloControl; }
 QT_END_NAMESPACE
@@ -31,6 +36,8 @@ private slots:
     void on_m_btnDir2Onnx_clicked();
     void on_m_Dir2Kmodel_clicked();
     void on_m_btnDownload_clicked();
+  void on_m_btnTestOnnx_clicked();
+  void on_m_btnTestPt_clicked();
 
 private:
     void on_trainProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
@@ -39,6 +46,7 @@ private:
     QProcess *m_convertProcess;
     QString m_allOutput;
     QString m_lastSavedPath; //记录模型路径
+    QString extractScript(const QString& yoloPath, const QString& resourceName);
 
 };
 

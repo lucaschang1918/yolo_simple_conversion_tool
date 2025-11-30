@@ -71,6 +71,8 @@ public:
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QPushButton *m_btnDownload;
+    QPushButton *m_btnTestPt;
+    QPushButton *m_btnTestOnnx;
     QSpacerItem *verticalSpacer;
     QLabel *label_11;
     QGridLayout *gridLayout_2;
@@ -95,7 +97,7 @@ public:
     {
         if (yoloControl->objectName().isEmpty())
             yoloControl->setObjectName("yoloControl");
-        yoloControl->resize(758, 353);
+        yoloControl->resize(1675, 372);
         centralwidget = new QWidget(yoloControl);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout_5 = new QHBoxLayout(centralwidget);
@@ -296,6 +298,16 @@ public:
 
         verticalLayout->addWidget(m_btnDownload);
 
+        m_btnTestPt = new QPushButton(layoutWidget1);
+        m_btnTestPt->setObjectName("m_btnTestPt");
+
+        verticalLayout->addWidget(m_btnTestPt);
+
+        m_btnTestOnnx = new QPushButton(layoutWidget1);
+        m_btnTestOnnx->setObjectName("m_btnTestOnnx");
+
+        verticalLayout->addWidget(m_btnTestOnnx);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -424,6 +436,8 @@ public:
         m_btn2Onnx->setText(QCoreApplication::translate("yoloControl", "toOnnx", nullptr));
         m_btn2Kmodel->setText(QCoreApplication::translate("yoloControl", "toKmodel", nullptr));
         m_btnDownload->setText(QCoreApplication::translate("yoloControl", "\344\270\213\350\275\275\346\226\207\346\241\243", nullptr));
+        m_btnTestPt->setText(QCoreApplication::translate("yoloControl", "\346\265\213\350\257\225Pt", nullptr));
+        m_btnTestOnnx->setText(QCoreApplication::translate("yoloControl", "\346\265\213\350\257\225Onnx", nullptr));
         label_11->setText(QCoreApplication::translate("yoloControl", "\344\270\215\350\256\255\347\273\203\347\233\264\346\216\245\350\275\254\345\214\226\351\234\200\350\246\201\346\217\220\344\276\233\346\250\241\345\236\213\346\226\207\344\273\266\345\222\214val\346\225\260\346\215\256\351\233\206\351\273\230\350\256\244\346\230\257best.onnx/best.pt", nullptr));
         label_12->setText(QCoreApplication::translate("yoloControl", "\346\250\241\345\236\213\346\226\207\344\273\266\350\267\257\345\276\204:", nullptr));
         m_btnPtOpen->setText(QCoreApplication::translate("yoloControl", "\346\211\223\345\274\200", nullptr));

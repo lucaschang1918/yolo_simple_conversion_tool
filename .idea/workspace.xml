@@ -23,9 +23,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96091125-4f8f-4eda-bdba-5addcb97b24f" name="更改" comment="version 1.1">
+    <list default="true" id="96091125-4f8f-4eda-bdba-5addcb97b24f" name="更改" comment="version 1.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_icon.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/app_icon.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_icon.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/resource/app_icon.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naiLong.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resource/naiLong.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widget/ui_yolocontrol.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/ui_yolocontrol.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widget/yolocontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/yolocontrol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widget/yolocontrol.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/yolocontrol.hpp" afterDir="false" />
@@ -45,6 +47,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release-QT" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -96,11 +99,19 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\qt\yolo\resource\scripts" />
+      <recent name="E:\code\qt\yolo\resource" />
+      <recent name="E:\code\qt\yolo\resource\doc" />
       <recent name="E:\code\qt\yolo" />
-      <recent name="E:\code\qt\yolo\src" />
+      <recent name="E:\code\qt\yolo\src\resource" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project" CONFIG_NAME="Release-QT" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -117,7 +128,8 @@
       <workItem from="1756288067641" duration="59000" />
       <workItem from="1761313331259" duration="2199000" />
       <workItem from="1761562956984" duration="863000" />
-      <workItem from="1763649279642" duration="1871000" />
+      <workItem from="1763649279642" duration="3545000" />
+      <workItem from="1764484587091" duration="9753000" />
     </task>
     <task id="LOCAL-00001" summary="version 1.0">
       <option name="closed" value="true" />
@@ -135,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761314565092</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="version 1.2">
+      <option name="closed" value="true" />
+      <created>1763651192802</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763651192802</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="version 1.0" />
     <MESSAGE value="version 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.1" />
+    <MESSAGE value="version 1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.2" />
   </component>
 </project>

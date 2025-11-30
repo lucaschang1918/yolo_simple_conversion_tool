@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>758</width>
-    <height>353</height>
+    <width>1675</width>
+    <height>372</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -318,6 +318,20 @@
           <widget class="QPushButton" name="m_btnDownload">
            <property name="text">
             <string>下载文档</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnTestPt">
+           <property name="text">
+            <string>测试Pt</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnTestOnnx">
+           <property name="text">
+            <string>测试Onnx</string>
            </property>
           </widget>
          </item>

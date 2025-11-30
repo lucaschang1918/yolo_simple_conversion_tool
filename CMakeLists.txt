@@ -121,7 +121,7 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS
 # 在 IDE 中按目录结构组织文件
 source_group(TREE ${PROJECT_ROOT_DIR} FILES ${SRC_FILES})
 qt_add_resources(PROJECT_RESOURCES
-        app_icon.qrc
+        resource/app_icon.qrc
 )
 #target_sources(Project PRIVATE naiLong.o)
 # -------------------------------- 可执行目标 --------------------------------
