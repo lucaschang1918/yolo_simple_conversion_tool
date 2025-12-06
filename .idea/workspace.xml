@@ -23,15 +23,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96091125-4f8f-4eda-bdba-5addcb97b24f" name="更改" comment="version 1.2">
+    <list default="true" id="96091125-4f8f-4eda-bdba-5addcb97b24f" name="更改" comment="使用独立终端提高训练速度,增加测试模型的功能,训练完成之后就可以立刻检查模型效果,提供部署环境的文档教程">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_icon.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/resource/app_icon.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naiLong.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resource/naiLong.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/ui_yolocontrol.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/ui_yolocontrol.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/scripts/test_onnx.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/scripts/test_onnx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/scripts/test_pt.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/scripts/test_pt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widget/yolocontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/yolocontrol.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/yolocontrol.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/yolocontrol.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/yolocontrol.ui" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/yolocontrol.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,11 +103,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project" CONFIG_NAME="Release-QT" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -129,7 +120,8 @@
       <workItem from="1761313331259" duration="2199000" />
       <workItem from="1761562956984" duration="863000" />
       <workItem from="1763649279642" duration="3545000" />
-      <workItem from="1764484587091" duration="9753000" />
+      <workItem from="1764484587091" duration="10930000" />
+      <workItem from="1765010433264" duration="9301000" />
     </task>
     <task id="LOCAL-00001" summary="version 1.0">
       <option name="closed" value="true" />
@@ -155,7 +147,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763651192802</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="使用独立终端提高训练速度,增加测试模型的功能,训练完成之后就可以立刻检查模型效果,提供部署环境的文档教程">
+      <option name="closed" value="true" />
+      <created>1764494815168</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1764494815169</updated>
+    </task>
+    <task id="LOCAL-00005" summary="使用独立终端提高训练速度,增加测试模型的功能,训练完成之后就可以立刻检查模型效果,提供部署环境的文档教程">
+      <option name="closed" value="true" />
+      <created>1764495313579</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764495313579</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +201,7 @@
     <MESSAGE value="version 1.0" />
     <MESSAGE value="version 1.1" />
     <MESSAGE value="version 1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.2" />
+    <MESSAGE value="使用独立终端提高训练速度,增加测试模型的功能,训练完成之后就可以立刻检查模型效果,提供部署环境的文档教程" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用独立终端提高训练速度,增加测试模型的功能,训练完成之后就可以立刻检查模型效果,提供部署环境的文档教程" />
   </component>
 </project>

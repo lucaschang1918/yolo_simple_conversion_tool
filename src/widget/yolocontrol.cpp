@@ -551,6 +551,7 @@ void yoloControl::on_m_btn2Onnx_clicked() {
          << "--weights" << weightsPath
          << "--imgsz" << QString::number(imageSize)
          << "--batch" << "1"
+         << "--opset" << "11"
          << "--include" << "onnx";
   } else if (yoloVersion == "YOLOv8" || yoloVersion == "YOLOv11") {
     command = "yolo";
@@ -563,6 +564,8 @@ void yoloControl::on_m_btn2Onnx_clicked() {
     QMessageBox::warning(this, "版本错误", "当前 YOLO 版本不支持导出 ONNX。");
     return;
   }
+
+
 
 #ifdef Q_OS_WIN
   QString fullCommand = "cmd.exe";
@@ -723,64 +726,112 @@ void yoloControl::on_m_btnDir2Onnx_clicked() {
     QMessageBox::warning(this, "缺少参数", "请先选择 .pt 权重文件。");
     return;
   }
+  // ---- 生成 ONNX 输出路径（和 .pt 同目录）----
+  QString onnxPath = QFileInfo(ptPath).absolutePath() + "/best.onnx";
+
 
   QString command;
   QStringList args;
 
+  // -------------------------------------------
+  //        YOLOv5 导出：强制 opset=11
+  // -------------------------------------------
   if (yoloVersion == "YOLOv5") {
     command = "python";
     args << "export.py"
          << "--weights" << ptPath
          << "--imgsz" << QString::number(imageSize)
          << "--batch" << "1"
+         << "--opset" << "11"           // ⭐ 防止 OpenCV 加载失败
          << "--include" << "onnx";
-  } else if (yoloVersion == "YOLOv8" || yoloVersion == "YOLOv11") {
+  }
+
+  // -------------------------------------------
+  //   YOLOv8/YOLOv11 导出：同样加入 opset=11
+  // -------------------------------------------
+  else if (yoloVersion == "YOLOv8" || yoloVersion == "YOLOv11") {
     command = "yolo";
     args << "export"
          << "model=" + ptPath
          << "format=onnx"
+         << "opset=11"                  // ⭐ 必须加
          << "imgsz=" + QString::number(imageSize)
          << "batch=1";
-  } else {
+  }
+
+  else {
     QMessageBox::warning(this, "版本错误", "不支持的 YOLO 版本，请选择 YOLOv5/YOLOv8/YOLOv11。");
     return;
   }
 
+  // --------------------------------------------------------
+  //       ⭐ 第二步：自动执行 onnxsim 将 best.onnx 简化
+  // --------------------------------------------------------
+  // 添加 onnxsim 步骤（使用绝对路径）
+  QString simCommand = QString("python -m onnxsim %1 %1").arg(onnxPath);
+
+
 #ifdef Q_OS_WIN
   QString fullCommand = "cmd.exe";
-  QStringList fullArgs;
-  fullArgs << "/C" << "conda activate " + envName + " && " + command + " " + args.join(" ");
+  QString fullScript =
+      QString("conda activate %1 && %2 %3 && %4")
+          .arg(envName)
+          .arg(command)
+          .arg(args.join(" "))
+          .arg(simCommand);
+
+  QStringList fullArgs = { "/C", fullScript };
 #else
   QString fullCommand = "bash";
-  QStringList fullArgs;
-  fullArgs << "-c" << "conda activate " + envName + " && " + command + " " + args.join(" ");
+  QString fullScript =
+      QString("source ~/anaconda3/etc/profile.d/conda.sh && "
+              "conda activate %1 && %2 %3 && %4")
+          .arg(envName)
+          .arg(command)
+          .arg(args.join(" "))
+          .arg(simCmd);
+
+  QStringList fullArgs = { "-c", fullScript };
 #endif
 
+  // 启动进程
   m_convertProcess = new QProcess(this);
   m_convertProcess->setWorkingDirectory(yoloPath);
+  m_convertProcess->setProcessChannelMode(QProcess::MergedChannels);
 
   connect(m_convertProcess, &QProcess::readyReadStandardOutput, this, [=]() {
-    QString output = QString::fromUtf8(m_convertProcess->readAllStandardOutput());
-    ui->m_editLog->append(output);
+    ui->m_editLog->append(QString::fromUtf8(m_convertProcess->readAllStandardOutput()));
   });
+
   connect(m_convertProcess, &QProcess::readyReadStandardError, this, [=]() {
-    QString output = QString::fromUtf8(m_convertProcess->readAllStandardError());
-    ui->m_editLog->append(output);
+    ui->m_editLog->append(QString::fromUtf8(m_convertProcess->readAllStandardError()));
   });
+
   connect(m_convertProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
           this, [=](int exitCode, QProcess::ExitStatus exitStatus) {
+
             if (exitStatus == QProcess::NormalExit && exitCode == 0) {
-              QMessageBox::information(this, "转换完成", "ONNX 转换成功！");
-            } else {
-              QMessageBox::critical(this, "转换失败", "ONNX 转换失败，请检查日志。");
+
+              QString finalOnnx = QDir(ui->m_lineYoloPath->text())
+                                      .filePath("weights/best.onnx");
+
+              ui->m_editLog->append("\n🎉 简化 ONNX 完成： " + finalOnnx);
+
+              QMessageBox::information(this, "转换完成",
+                                       "ONNX 导出 + 简化成功！\n最终文件：best.onnx");
             }
+            else {
+              QMessageBox::critical(this, "转换失败", "ONNX 导出失败，请查看日志。");
+            }
+
             m_convertProcess->deleteLater();
             m_convertProcess = nullptr;
           });
 
-  ui->m_editLog->append("执行命令: " + fullCommand + " " + fullArgs.join(" "));
+  ui->m_editLog->append("执行命令: " + fullCommand + " " + fullScript);
   m_convertProcess->start(fullCommand, fullArgs);
 }
+
 
 void yoloControl::on_m_Dir2Kmodel_clicked() {
   QString yoloVersion = ui->m_comVersion->currentText();
@@ -941,9 +992,11 @@ void yoloControl::on_m_btnTestPt_clicked()
   QString fullCommand = "cmd.exe";
 
   // --- 你想要的写法 ---
+  QString version = ui->m_comVersion->currentText(); // YOLOv5 / YOLOv8 / YOLOv11
+
   QString script = QString(
-                       "conda activate %1 && python %2 %3"
-                       ).arg(envName, scriptPath, ptPath);
+                       "conda activate %1 && python %2 %3 %4"
+                       ).arg(envName, scriptPath, ptPath, version);
 
   QStringList args = { "/C", script };
 #else
@@ -982,11 +1035,14 @@ void yoloControl::on_m_btnTestOnnx_clicked()
     return;
   }
 
-  QString onnxPath = QDir(m_lastSavedPath).absoluteFilePath("weights/best.onnx");
+  //默认也可以传一个onnx文件
+  QString onnxPath = ui->m_linePtPath->text();
   // ONNX 路径自动推算
-  QString onnxUserPath = QFileInfo(ui->m_linePtPath->text()).absolutePath() + "/best.onnx";
+  QFileInfo info(onnxPath);
 
-  if (!QFile::exists(onnxPath) and !QFile::exists(onnxPath)) {
+  QString onnxUserPath = info.absolutePath() + "/" + info.completeBaseName() + ".onnx";
+
+  if (!QFile::exists(onnxPath) and !QFile::exists(onnxUserPath)) {
     QMessageBox::warning(this, "缺少 ONNX", "未找到 best.onnx，请先导出 ONNX。");
     return;
   }
